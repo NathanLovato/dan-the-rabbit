@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://environment/Rock.tscn" type="PackedScene" id=3]
+
+[node name="Level" type="Node2D"]
+
+[node name="Character" parent="." instance=ExtResource( 1 )]
+
+position = Vector2( 487.73, 336.4 )
+
+[node name="Character2" parent="." instance=ExtResource( 2 )]
+
+position = Vector2( 1004.29, 341.311 )
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Rock" parent="Background" instance=ExtResource( 3 )]
+
+position = Vector2( 147.329, 108.041 )
+
+[node name="Rock2" parent="Background" instance=ExtResource( 3 )]
+
+position = Vector2( 861.814, 120.261 )
+scale = Vector2( 0.844736, 0.844736 )
+
+[node name="Rock3" parent="Background" instance=ExtResource( 3 )]
+
+position = Vector2( 262.678, 478.76 )
+scale = Vector2( 0.844736, 0.844736 )
+
+[node name="Rock4" parent="Background" instance=ExtResource( 3 )]
+
+position = Vector2( 763.595, 417.373 )
+scale = Vector2( 0.844736, 0.844736 )
+
+

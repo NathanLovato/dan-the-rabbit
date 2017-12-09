@@ -32,7 +32,6 @@ func _ready():
 	$Pivot/WeaponSpawn.add_child(weapon_scene.instance())
 	weapon = $Pivot/WeaponSpawn.get_child(0)
 	weapon.connect("attack_finished", self, "_on_Weapon_attack_finished")
-	self.connect("changed_state", weapon, "_on_Character_changed_state")
 
 
 func _change_state(new_state):
@@ -48,8 +47,8 @@ func _change_state(new_state):
 			if not weapon:
 				_change_state(IDLE)
 				return
+			weapon.attack()
 			$AnimationPlayer.play('idle')
-			emit_signal("changed_state", "attack")
 		STAGGER:
 			$AnimationPlayer.play('stagger')
 		DIE:
@@ -83,7 +82,6 @@ func _physics_process(delta):
 		else:
 			speed = 0
 			_change_state(IDLE)
-#		speed = clamp(speed, 0, max_speed)
 
 		velocity = input_direction.normalized() * speed * delta
 		move_and_collide(velocity)

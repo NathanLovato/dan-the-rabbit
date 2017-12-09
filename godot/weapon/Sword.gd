@@ -48,10 +48,5 @@ func _on_animation_finished(name):
 		emit_signal("attack_finished")
 
 
-func _on_Character_changed_state(state_name):
-	if state_name == "attack":
-		attack()
-
-
 func attack():
 	_change_state(ATTACK)

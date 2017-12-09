@@ -42,11 +42,16 @@ func _physics_process(delta):
 				hit_objects.append(body.get_rid().get_id())
 
 
-func attack():
-	_change_state(ATTACK)
-
-
 func _on_animation_finished(name):
 	if name == "attack":
 		_change_state(IDLE)
 		emit_signal("attack_finished")
+
+
+func _on_Character_changed_state(state_name):
+	if state_name == "attack":
+		attack()
+
+
+func attack():
+	_change_state(ATTACK)

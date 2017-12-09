@@ -1,33 +1,144 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Health.gd" type="Script" id=2]
+[ext_resource path="res://Character.gd" type="Script" id=1]
+[ext_resource path="res://weapon/Sword.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/dan.png" type="Texture" id=3]
-[ext_resource path="res://weapon/Sword.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Health.gd" type="Script" id=4]
+[ext_resource path="res://interface/LifeBar.tscn" type="PackedScene" id=5]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="Animation" id=7]
+
+resource_name = "SETUP"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Body:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "die"
+length = 1.0
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Body:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.25, 0.35, 1 ),
+"transitions": PoolRealArray( 0.618091, 0.618091, 0.618091, 0.618091, 0.618091, 0.618091, 1 ),
+"update": 0,
+"values": [ Color( 0.925781, 0.0614777, 0.203277, 1 ), Color( 1, 1, 1, 1 ), Color( 0.925781, 0.0614777, 0.203277, 1 ), Color( 1, 1, 1, 1 ), Color( 0.925781, 0.0614777, 0.203277, 1 ), Color( 1, 1, 1, 1 ), Color( 0.925781, 0.0614777, 0.203277, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "idle"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+
+resource_name = "stagger"
+length = 0.35
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Body:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.25, 0.35 ),
+"transitions": PoolRealArray( 0.618091, 0.618091, 0.618091, 0.618091, 0.618091, 0.618091 ),
+"update": 0,
+"values": [ Color( 0.925781, 0.0614777, 0.203277, 1 ), Color( 1, 1, 1, 1 ), Color( 0.925781, 0.0614777, 0.203277, 1 ), Color( 1, 1, 1, 1 ), Color( 0.925781, 0.0614777, 0.203277, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "walk"
+length = 0.3
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 0.466516, 2.28288 ),
+"update": 0,
+"values": [ Vector2( 0, -1 ), Vector2( 0, -11.83 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 15.1016, 21.3794 )
+extents = Vector2( 15.662, 24.016 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Character" type="KinematicBody2D" groups=[
+"character",
+]]
 
 input_pickable = false
 collision_layer = 1
-collision_mask = 1
+collision_mask = 10
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+weapon_scene = ExtResource( 2 )
 
-[node name="Health" type="Node" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-script = ExtResource( 2 )
-max_health = 4
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+anims/SETUP = SubResource( 7 )
+anims/die = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/stagger = SubResource( 6 )
+anims/walk = SubResource( 5 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+position = Vector2( 0, -24.6206 )
+shape = SubResource( 4 )
 
 [node name="Pivot" type="Position2D" parent="."]
 
+editor/display_folded = true
+
 [node name="Body" type="Sprite" parent="Pivot"]
 
-position = Vector2( 0, -1 )
+position = Vector2( 0, -8.55517 )
 texture = ExtResource( 3 )
 offset = Vector2( -39.3269, -72.5508 )
 
@@ -35,18 +146,14 @@ offset = Vector2( -39.3269, -72.5508 )
 
 position = Vector2( 55, -39 )
 
-[node name="Sword" parent="Pivot/WeaponSpawn" instance=ExtResource( 4 )]
+[node name="Health" type="Node" parent="."]
 
-show_behind_parent = true
-scale = Vector2( 1, 1 )
+script = ExtResource( 4 )
+max_health = 9
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="LifeBar" parent="." instance=ExtResource( 5 )]
 
-position = Vector2( 0, -23.3265 )
-shape = SubResource( 1 )
-
-[node name="PebbleSpawn" type="Position2D" parent="."]
-
-position = Vector2( 65, -57 )
+margin_top = -178.0
+margin_bottom = -157.0
 
 

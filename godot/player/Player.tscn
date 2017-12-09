@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player/Player.gd" type="Script" id=2]
+[ext_resource path="res://PebbleSpawner.gd" type="Script" id=3]
+
+[node name="Player" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+
+[node name="PebbleSpawner" type="Position2D" parent="."]
+
+position = Vector2( 0, -41.4124 )
+script = ExtResource( 3 )
+offset = 45
+
+

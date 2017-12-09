@@ -1,18 +1,20 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Character.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://monster/Porcupine.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://environment/Rock.tscn" type="PackedScene" id=3]
 
 [node name="Level" type="Node2D"]
 
-[node name="Character" parent="." instance=ExtResource( 1 )]
+[node name="Porcupine" parent="." instance=ExtResource( 1 )]
 
-position = Vector2( 487.73, 336.4 )
+position = Vector2( 994, 342 )
+collision_mask = 1
 
-[node name="Character2" parent="." instance=ExtResource( 2 )]
+[node name="Player" parent="." instance=ExtResource( 2 )]
 
-position = Vector2( 1004.29, 341.311 )
+position = Vector2( 472, 394 )
+collision_mask = 1
 
 [node name="Background" type="Node2D" parent="."]
 

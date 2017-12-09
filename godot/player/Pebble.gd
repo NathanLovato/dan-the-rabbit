@@ -1,8 +1,10 @@
-extends Area2D
+extends KinematicBody2D
 
 # TODO: calculate it
 const START_HEIGHT = 57
 const GRAVITY = 500
+
+var spawn_position = Vector2()
 
 const SPEED = 1800
 const MAX_THROW_DISTANCE = 800
@@ -21,6 +23,7 @@ var timer = 0.0
 
 func _ready():
 	set_as_toplevel(true)
+	position = spawn_position
 	height = START_HEIGHT
 
 
@@ -37,6 +40,12 @@ func _physics_process(delta):
 	motion.y += fall_speed * delta
 
 	flown_distance += abs(motion.length())
-	position += motion
+	var collision_info = move_and_collide(motion)
 
-	var bodies = get_overlapping_bodies()
+	if not collision_info:
+		return
+	$CollisionShape2D.disabled = true
+	set_physics_process(false)
+
+
+

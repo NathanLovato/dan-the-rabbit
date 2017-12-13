@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 50.6151, 33.2225 )
+extents = Vector2( 50.6151, 30.6767 )
 
 [node name="Gap" type="Area2D" groups=[
 "gap",
@@ -31,7 +31,7 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-position = Vector2( 0, -38.2276 )
+position = Vector2( 0, -40.2276 )
 shape = SubResource( 1 )
 
 

@@ -5,7 +5,6 @@ signal changed_state
 #MOTION
 const MAX_WALK_SPEED = 450
 const MAX_RUN_SPEED = 700
-const MAX_AIR_SPEED = 700
 
 const BUMP_DISTANCE = 60
 const BUMP_DURATION = 0.2
@@ -20,8 +19,13 @@ var height = 0.0 setget set_height
 var start_height = 0.0
 
 var speed = 0
-var air_speed = 0
 var max_speed = 0
+
+var max_air_speed = 0
+var air_speed = 0
+var air_motion = Vector2()
+var air_steering = Vector2()
+
 
 var input_direction = Vector2()
 var look_direction = Vector2(1, 0)
@@ -68,6 +72,8 @@ func _change_state(new_state):
 			$AnimationPlayer.play('walk')
 		JUMP:
 			air_speed = speed
+			max_air_speed = max_speed
+			air_motion = motion
 			$AnimationPlayer.play('idle')
 
 			$Tween.interpolate_method(self, 'animate_jump_height', 0, 1, JUMP_DURATION, Tween.TRANS_LINEAR, Tween.EASE_IN)
@@ -105,9 +111,9 @@ func _physics_process(delta):
 			# Can't scale a Body directly - scale another node2d
 			$Pivot.set_scale(Vector2(look_direction.x, 1))
 
-	var changed_direction = false
+#	var changed_direction = false
 	if input_direction:
-		changed_direction = abs(input_direction.angle_to(last_move_direction)) > PI/3
+#		changed_direction = abs(input_direction.angle_to(last_move_direction)) > PI/3
 		last_move_direction = input_direction
 
 	if state == IDLE:
@@ -139,18 +145,20 @@ func _physics_process(delta):
 		var air_acceleration = 1000
 		var air_decceleration = 2000
 
-		if changed_direction:
-			air_speed /= 3
-
 		if input_direction:
 			air_speed += air_acceleration * delta
 		else:
 			air_speed -= air_decceleration * delta
-		air_speed = clamp(air_speed, 0, MAX_AIR_SPEED)
+		air_speed = clamp(air_speed, 0, max_air_speed)
 
+		var target_motion = air_speed * input_direction.normalized() * delta
+		var steering = target_motion - air_motion
 
-		motion = last_move_direction.normalized() * air_speed * delta
-		move_and_collide(motion)
+		if steering.length() > 1:
+			steering = steering.normalized()
+
+		air_motion += steering
+		move_and_collide(air_motion)
 
 
 

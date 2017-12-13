@@ -100,7 +100,7 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
-extents = Vector2( 15.662, 24.016 )
+extents = Vector2( 13.6319, 5.50682 )
 
 [node name="Character" type="KinematicBody2D" groups=[
 "character",
@@ -137,7 +137,7 @@ playback/speed = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-position = Vector2( 0, -24.6206 )
+position = Vector2( -1, -7.69296 )
 shape = SubResource( 6 )
 
 [node name="Pivot" type="Position2D" parent="."]

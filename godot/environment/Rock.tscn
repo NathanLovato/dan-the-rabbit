@@ -5,9 +5,11 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 56.0826, 58.1628 )
+extents = Vector2( 56.0826, 30.9281 )
 
-[node name="Rock" type="StaticBody2D"]
+[node name="Rock" type="StaticBody2D" groups=[
+"environment",
+]]
 
 input_pickable = false
 collision_layer = 8
@@ -19,11 +21,12 @@ bounce = 0.0
 
 [node name="rock" type="Sprite" parent="."]
 
-position = Vector2( -0.114841, 0.196136 )
+position = Vector2( -0.114841, -36.0106 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
+position = Vector2( 0, -16.9354 )
 shape = SubResource( 1 )
 
 

@@ -15,11 +15,14 @@ func _ready():
 	_change_state(IDLE)
 
 
+# Weapon.gd
 func _change_state(new_state):
+	# Clean up previous state
 	match state:
 		ATTACK:
 			hit_objects = []
 
+	# Initialize the new state
 	match new_state:
 		IDLE:
 			$AnimationPlayer.play('idle')

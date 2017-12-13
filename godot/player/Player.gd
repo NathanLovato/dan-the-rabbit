@@ -2,10 +2,14 @@ extends "res://Character.gd"
 
 
 func _input(event):
-	if event.is_action_pressed("attack") and not state == ATTACK:
+	if event.is_action_pressed("attack") and not state in [ATTACK, JUMP]:
 		_change_state(ATTACK)
 	elif event.is_action_pressed("throw"):
 		$PebbleSpawner.spawn_pebble()
+	elif event.is_action_pressed("jump"):
+		if not state in [IDLE, MOVE]:
+			return
+		_change_state(JUMP)
 
 
 func _physics_process(delta):

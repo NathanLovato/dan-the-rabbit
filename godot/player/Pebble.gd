@@ -17,7 +17,7 @@ var fall_speed = 0.0
 
 var flown_distance = 0
 
-const LIFETIME = 2.0
+export(float) var LIFETIME = 2.0
 var timer = 0.0
 
 
@@ -25,13 +25,13 @@ func _ready():
 	set_as_toplevel(true)
 	position = spawn_position
 	height = START_HEIGHT
+	
+	$Timer.wait_time = LIFETIME
+	$Timer.connect('timeout', self, '_on_Timer_timeout')
+	$Timer.start()
 
 
 func _physics_process(delta):
-	timer += delta
-	if timer > LIFETIME:
-		queue_free()
-
 	if flown_distance >= MAX_THROW_DISTANCE:
 		return
 	fall_speed += GRAVITY * delta
@@ -48,4 +48,5 @@ func _physics_process(delta):
 	set_physics_process(false)
 
 
-
+func _on_Timer_timeout():
+	queue_free()

@@ -15,6 +15,7 @@ collision_layer = 4
 collision_mask = 10
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+LIFETIME = 2.0
 
 [node name="pebble" type="Sprite" parent="."]
 
@@ -23,5 +24,12 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
 
 

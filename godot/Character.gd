@@ -10,6 +10,9 @@ const BUMP_DISTANCE = 60
 const BUMP_DURATION = 0.2
 const MAX_BUMP_HEIGHT = 50
 
+const STAGGER_DURATION = 0.2
+var knockback_direction = Vector2()
+
 const JUMP_DURATION = 0.6
 const MAX_JUMP_HEIGHT = 80
 
@@ -59,6 +62,9 @@ func _ready():
 
 
 func _change_state(new_state):
+	match state:
+		STAGGER:
+			$Pivot/Body.modulate = Color('#fff')
 	# Initialize the new state
 	match new_state:
 		SPAWN:
@@ -95,6 +101,11 @@ func _change_state(new_state):
 			weapon.attack()
 			$AnimationPlayer.play('idle')
 		STAGGER:
+			var knockback = 100
+			# FIXME: push away from enemy instead
+			$Tween.interpolate_property(self, 'position', position, position + knockback * -knockback_direction, STAGGER_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)
+			$Tween.start()
+			
 			$AnimationPlayer.play('stagger')
 		DIE:
 			$AnimationPlayer.play('die')
@@ -104,18 +115,15 @@ func _change_state(new_state):
 
 
 func _physics_process(delta):
-	# Look direction
 	if input_direction.x:
 		if input_direction.x != look_direction.x:
 			look_direction.x = input_direction.x
 			# Can't scale a Body directly - scale another node2d
 			$Pivot.set_scale(Vector2(look_direction.x, 1))
 
-#	var changed_direction = false
 	if input_direction:
-#		changed_direction = abs(input_direction.angle_to(last_move_direction)) > PI/3
 		last_move_direction = input_direction
-
+	
 	if state == IDLE:
 		if input_direction:
 			_change_state(MOVE)
@@ -140,8 +148,11 @@ func _physics_process(delta):
 
 		if max_speed == MAX_RUN_SPEED and collider.is_in_group('environment'):
 			_change_state(BUMP)
+		if collider.is_in_group('character'):
+			$Health.take_damage(2)
+			knockback_direction = (collider.position - position).normalized()
+			_change_state(STAGGER)
 	elif state == JUMP:
-		# TODO: CONSIDER STEERING
 		var air_acceleration = 1000
 		var air_decceleration = 2000
 
@@ -179,7 +190,6 @@ func _on_Health_health_changed(new_health):
 
 
 func _on_Tween_tween_completed(object, key):
-#	print(key)
 	if key == ":position":
 		_change_state(IDLE)
 	if key == ":animate_jump_height":

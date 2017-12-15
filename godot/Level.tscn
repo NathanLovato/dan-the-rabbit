@@ -36,6 +36,21 @@ scale = Vector2( 0.844736, 0.844736 )
 position = Vector2( 262.678, 478.76 )
 scale = Vector2( 0.844736, 0.844736 )
 
+[node name="Rock5" parent="YSort" instance=ExtResource( 3 )]
+
+position = Vector2( 630.469, 792.287 )
+scale = Vector2( 0.844736, 0.844736 )
+
+[node name="Rock6" parent="YSort" instance=ExtResource( 3 )]
+
+position = Vector2( 1121.86, 713.905 )
+scale = Vector2( 0.844736, 0.844736 )
+
+[node name="Rock7" parent="YSort" instance=ExtResource( 3 )]
+
+position = Vector2( 986.202, 303.908 )
+scale = Vector2( 0.844736, 0.844736 )
+
 [node name="Rock4" parent="YSort" instance=ExtResource( 3 )]
 
 position = Vector2( 445.267, 150.739 )
@@ -43,7 +58,7 @@ scale = Vector2( 0.844736, 0.844736 )
 
 [node name="Porcupine" parent="YSort" instance=ExtResource( 4 )]
 
-position = Vector2( 1355.86, 554.219 )
+position = Vector2( 1214.17, 539.146 )
 collision_mask = 1
 
 [node name="Player" parent="YSort" instance=ExtResource( 5 )]

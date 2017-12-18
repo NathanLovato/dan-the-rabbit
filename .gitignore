@@ -1,2 +1,11 @@
 .import
 *.import
+
+# Too large for git
+*.kra
+*.kra~
+assets/**/*.png
+
+# Separate repo
+/_tuts
+/course-examples

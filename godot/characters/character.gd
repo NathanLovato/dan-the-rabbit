@@ -141,6 +141,11 @@ func _physics_process(delta):
 
 		motion = input_direction.normalized() * speed * delta
 		var collision_info = move_and_collide(motion)
+		
+		# FIXME: bugged, upgrade to more recent Godot build
+#		var velocity = input_direction.normalized() * speed
+#		move_and_slide(velocity)
+#		var collision_info = get_slide_collision(0)
 
 		if not collision_info:
 			return

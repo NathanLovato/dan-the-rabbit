@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://back_soon.png" type="Texture" id=1]
-[ext_resource path="res://environment/Gap.tscn" type="PackedScene" id=2]
+[ext_resource path="res://environment/Pit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://environment/Rock.tscn" type="PackedScene" id=3]
-[ext_resource path="res://monster/Porcupine.tscn" type="PackedScene" id=4]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://characters/monster/Porcupine.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/player/Player.tscn" type="PackedScene" id=5]
 
 [node name="Level" type="Node2D"]
 
@@ -65,5 +65,6 @@ collision_mask = 1
 
 position = Vector2( 690.493, 539.106 )
 collision_mask = 1
+weapon_scene = null
 
 

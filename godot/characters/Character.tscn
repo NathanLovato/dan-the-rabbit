@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Character.gd" type="Script" id=1]
-[ext_resource path="res://weapon/Sword.tscn" type="PackedScene" id=2]
-[ext_resource path="res://player/dan.png" type="Texture" id=3]
-[ext_resource path="res://player/shadow.png" type="Texture" id=4]
-[ext_resource path="res://Health.gd" type="Script" id=5]
+[ext_resource path="res://characters/character.gd" type="Script" id=1]
+[ext_resource path="res://characters/weapon/Sword.tscn" type="PackedScene" id=2]
+[ext_resource path="res://characters/player/dan.png" type="Texture" id=3]
+[ext_resource path="res://characters/player/shadow.png" type="Texture" id=4]
+[ext_resource path="res://characters/health.gd" type="Script" id=5]
 [ext_resource path="res://interface/LifeBar.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]

@@ -1,4 +1,4 @@
-extends "res://Character.gd"
+extends "res://characters/character.gd"
 
 
 func _input(event):

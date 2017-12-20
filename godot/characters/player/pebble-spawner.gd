@@ -1,6 +1,6 @@
 extends Position2D
 
-const Pebble = preload("res://Player/Pebble.tscn")
+const Pebble = preload("res://characters/player/Pebble.tscn")
 
 var start_position = Vector2()
 var throw_direction = Vector2()

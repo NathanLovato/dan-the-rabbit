@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://interface/life-bar/background.png" type="Texture" id=1]
-[ext_resource path="res://interface/life-bar/fill.png" type="Texture" id=2]
+[ext_resource path="res://interface/lifebar/background.png" type="Texture" id=1]
+[ext_resource path="res://interface/lifebar/fill.png" type="Texture" id=2]
 [ext_resource path="res://interface/LifeBar.gd" type="Script" id=3]
 
 [node name="LifeBar" type="TextureProgress" groups=[

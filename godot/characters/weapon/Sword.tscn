@@ -1,7 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://weapon/Sword.gd" type="Script" id=1]
-[ext_resource path="res://weapon/sword.png" type="Texture" id=2]
+[ext_resource path="res://characters/weapon/sword.gd" type="Script" id=1]
+[ext_resource path="res://characters/weapon/sword.png" type="Texture" id=2]
+
+
 
 [sub_resource type="Animation" id=1]
 

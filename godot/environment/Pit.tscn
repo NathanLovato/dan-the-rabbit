@@ -1,7 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://environment/Gap.gd" type="Script" id=1]
-[ext_resource path="res://environment/gap.png" type="Texture" id=2]
+[ext_resource path="res://environment/pit.gd" type="Script" id=1]
+[ext_resource path="res://environment/pit.png" type="Texture" id=2]
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 

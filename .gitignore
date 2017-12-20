@@ -4,7 +4,8 @@
 # Too large for git
 *.kra
 *.kra~
-assets/**/*.png
+/assets/**/*.png
+/assets/icons
 
 # Separate repo
 /_tuts

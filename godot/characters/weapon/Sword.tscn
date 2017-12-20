@@ -3,8 +3,6 @@
 [ext_resource path="res://characters/weapon/sword.gd" type="Script" id=1]
 [ext_resource path="res://characters/weapon/sword.png" type="Texture" id=2]
 
-
-
 [sub_resource type="Animation" id=1]
 
 resource_name = "SETUP"
@@ -132,13 +130,12 @@ extents = Vector2( 63.7977, 9.32224 )
 
 [node name="Sword" type="Area2D"]
 
-rotation = -1.74533
+rotation = 1.5708
 input_pickable = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-monitoring = false
 monitorable = false
 collision_layer = 16
 collision_mask = 3

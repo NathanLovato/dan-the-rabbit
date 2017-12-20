@@ -105,7 +105,7 @@ func _change_state(new_state):
 			# FIXME: push away from enemy instead
 			$Tween.interpolate_property(self, 'position', position, position + knockback * -knockback_direction, STAGGER_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)
 			$Tween.start()
-			
+
 			$AnimationPlayer.play('stagger')
 		DIE:
 			$AnimationPlayer.play('die')
@@ -123,7 +123,7 @@ func _physics_process(delta):
 
 	if input_direction:
 		last_move_direction = input_direction
-	
+
 	if state == IDLE:
 		if input_direction:
 			_change_state(MOVE)
@@ -141,7 +141,7 @@ func _physics_process(delta):
 
 		motion = input_direction.normalized() * speed * delta
 		var collision_info = move_and_collide(motion)
-		
+
 		# FIXME: bugged, upgrade to more recent Godot build
 #		var velocity = input_direction.normalized() * speed
 #		move_and_slide(velocity)

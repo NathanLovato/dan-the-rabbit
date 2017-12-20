@@ -2,8 +2,8 @@
 
 [ext_resource path="res://characters/character.gd" type="Script" id=1]
 [ext_resource path="res://characters/weapon/Sword.tscn" type="PackedScene" id=2]
-[ext_resource path="res://characters/player/dan.png" type="Texture" id=3]
-[ext_resource path="res://characters/player/shadow.png" type="Texture" id=4]
+[ext_resource path="res://characters/npc/body.png" type="Texture" id=3]
+[ext_resource path="res://characters/shadow.png" type="Texture" id=4]
 [ext_resource path="res://characters/health.gd" type="Script" id=5]
 [ext_resource path="res://interface/LifeBar.tscn" type="PackedScene" id=6]
 
@@ -13,17 +13,6 @@ resource_name = "SETUP"
 length = 1.0
 loop = false
 step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Pivot/Body:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
 
 [sub_resource type="Animation" id=2]
 
@@ -31,17 +20,6 @@ resource_name = "die"
 length = 1.0
 loop = false
 step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("Pivot/Body:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.25, 0.35, 1 ),
-"transitions": PoolRealArray( 0.618091, 0.618091, 0.618091, 0.618091, 0.618091, 0.618091, 1 ),
-"update": 0,
-"values": [ Color( 0.925781, 0.0614777, 0.203277, 1 ), Color( 1, 1, 1, 1 ), Color( 0.925781, 0.0614777, 0.203277, 1 ), Color( 1, 1, 1, 1 ), Color( 0.925781, 0.0614777, 0.203277, 1 ), Color( 1, 1, 1, 1 ), Color( 0.925781, 0.0614777, 0.203277, 0 ) ]
-}
 
 [sub_resource type="Animation" id=3]
 
@@ -49,17 +27,6 @@ resource_name = "idle"
 length = 1.0
 loop = false
 step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Pivot/Body:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, -1 ) ]
-}
 
 [sub_resource type="Animation" id=4]
 
@@ -67,17 +34,6 @@ resource_name = "stagger"
 length = 0.35
 loop = false
 step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("Pivot/Body:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.25, 0.35 ),
-"transitions": PoolRealArray( 0.618091, 0.618091, 0.618091, 0.618091, 0.618091, 0.618091 ),
-"update": 0,
-"values": [ Color( 0.925781, 0.0614777, 0.203277, 1 ), Color( 1, 1, 1, 1 ), Color( 0.925781, 0.0614777, 0.203277, 1 ), Color( 1, 1, 1, 1 ), Color( 0.925781, 0.0614777, 0.203277, 1 ), Color( 1, 1, 1, 1 ) ]
-}
 
 [sub_resource type="Animation" id=5]
 
@@ -85,17 +41,6 @@ resource_name = "walk"
 length = 0.3
 loop = true
 step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("Pivot/Body:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.15 ),
-"transitions": PoolRealArray( 0.466516, 2.28288 ),
-"update": 0,
-"values": [ Vector2( 0, -1 ), Vector2( 0, -11.83 ) ]
-}
 
 [sub_resource type="RectangleShape2D" id=6]
 
@@ -144,9 +89,9 @@ shape = SubResource( 6 )
 
 [node name="Body" type="Sprite" parent="Pivot"]
 
-position = Vector2( 0, -8.55517 )
+position = Vector2( -0.0780182, -0.422928 )
 texture = ExtResource( 3 )
-offset = Vector2( -39.3269, -72.5508 )
+offset = Vector2( 0.335912, -58.7778 )
 
 [node name="WeaponSpawn" type="Position2D" parent="Pivot"]
 
@@ -156,7 +101,7 @@ position = Vector2( 55, -39 )
 
 self_modulate = Color( 1, 1, 1, 0.313726 )
 show_behind_parent = true
-position = Vector2( -5.32052, -0.201147 )
+position = Vector2( -0.32052, -4.20115 )
 texture = ExtResource( 4 )
 
 [node name="Health" type="Node" parent="."]
@@ -166,7 +111,9 @@ max_health = 9
 
 [node name="LifeBar" parent="." instance=ExtResource( 6 )]
 
-margin_top = -191.0
-margin_bottom = -170.0
+margin_left = -62.0
+margin_top = -170.0
+margin_right = 64.0
+margin_bottom = -149.0
 
 

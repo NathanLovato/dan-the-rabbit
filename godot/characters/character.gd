@@ -119,10 +119,12 @@ func _change_state(new_state):
 
 			$AnimationPlayer.play('stagger')
 		DIE:
+			# TODO: Add option to queue states so a char dies at the end of STAGGER
+			set_process_input(false)
+			set_physics_process(false)
 			$CollisionShape2D.disabled = true
+			$Tween.stop(self, '')
 			$AnimationPlayer.play('die')
-			$Tween.stop_all()
-			print('playing %s' % $AnimationPlayer.current_animation)
 		DEAD:
 			queue_free()
 	state = new_state
@@ -146,7 +148,6 @@ func _physics_process(delta):
 			if collider.is_in_group('character'):
 				$Health.take_damage(2)
 				knockback_direction = (collider.position - position).normalized()
-				_change_state(STAGGER)
 	elif state == JUMP:
 		jump(delta)
 

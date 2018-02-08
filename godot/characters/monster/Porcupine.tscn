@@ -28,9 +28,8 @@ texture = ExtResource( 2 )
 offset = Vector2( 0.341893, -29.0374 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="LifeBar" parent="." index="7"]
+[node name="LifeBarPivot" parent="." index="7"]
 
-margin_top = -107.0
-margin_bottom = -86.0
+position = Vector2( 0, -110 )
 
 

@@ -15,7 +15,6 @@ var poison_cycles = 0
 
 func _ready():
 	health = max_health
-	_change_status(POISONED)
 	$PoisonTimer.connect('timeout', self, '_on_PoisonTimer_timeout')
 
 

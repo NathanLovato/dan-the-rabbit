@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://characters/character.gd" type="Script" id=1]
 [ext_resource path="res://characters/health.gd" type="Script" id=2]
 [ext_resource path="res://characters/npc/body.png" type="Texture" id=3]
 [ext_resource path="res://characters/weapon/weapon-pivot.gd" type="Script" id=4]
 [ext_resource path="res://characters/shadow.png" type="Texture" id=5]
-[ext_resource path="res://interface/LifeBar.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 
@@ -310,12 +309,10 @@ position = Vector2( -0.32052, -4.20115 )
 texture = ExtResource( 5 )
 _sections_unfolded = [ "Visibility" ]
 
-[node name="LifeBar" parent="." index="7" instance=ExtResource( 6 )]
+[node name="LifeBarPivot" type="Position2D" parent="." index="7"]
 
-margin_left = -62.0
-margin_top = -170.0
-margin_right = 64.0
-margin_bottom = -149.0
-mouse_default_cursor_shape = 0
+position = Vector2( 0, -166.567 )
+z_index = 1000
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 

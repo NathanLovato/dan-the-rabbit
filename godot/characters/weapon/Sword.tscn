@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://characters/weapon/sword.gd" type="Script" id=1]
 [ext_resource path="res://characters/weapon/sword.png" type="Texture" id=2]
@@ -233,11 +233,6 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
-
-custom_solver_bias = 0.0
-extents = Vector2( 63.7977, 9.32224 )
-
 [node name="Sword" type="Area2D" index="0"]
 
 rotation = -1.5708
@@ -252,7 +247,7 @@ collision_mask = 3
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-power = 2
+_sections_unfolded = [ "Transform" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
 
@@ -271,13 +266,14 @@ _sections_unfolded = [ "Playback Options" ]
 
 [node name="sword" type="Sprite" parent="." index="1"]
 
-position = Vector2( 3.27147, -1.33644 )
+position = Vector2( 4, 0 )
 texture = ExtResource( 2 )
-offset = Vector2( 68.0096, -0.0415089 )
+offset = Vector2( 67, 0 )
+_sections_unfolded = [ "Offset", "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2"]
 
-position = Vector2( 72.5491, -0.794434 )
-shape = SubResource( 6 )
+build_mode = 0
+polygon = PoolVector2Array( 28.0001, -15.9999, 136, -15.9995, 164, 0.000593678, 136, 16.0005, 27.9999, 16.0001 )
 
 

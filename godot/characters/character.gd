@@ -76,6 +76,9 @@ func _change_state(new_state):
 	match state:
 		STAGGER:
 			$BodyPivot/Body.modulate = Color('#fff')
+		ATTACK:
+			set_physics_process(true)
+
 	# Initialize the new state
 	match new_state:
 		SPAWN:
@@ -105,6 +108,7 @@ func _change_state(new_state):
 			$Tween.interpolate_property(self, 'scale', scale, Vector2(0,0), .4, Tween.TRANS_QUAD, Tween.EASE_IN)
 			$Tween.start()
 		ATTACK:
+			set_physics_process(false)
 			if not weapon:
 				print("%s tries to attack but has no weapon" % get_name())
 				_change_state(IDLE)
@@ -160,6 +164,7 @@ func update_direction():
 	if input_direction.x in [-1, 1]:
 		look_direction.x = input_direction.x
 		$BodyPivot.set_scale(Vector2(look_direction.x, 1))
+
 
 func move():
 	if input_direction:

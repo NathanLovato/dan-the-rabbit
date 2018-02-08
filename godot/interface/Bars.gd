@@ -2,7 +2,6 @@ extends Control
 
 var lifebar_node = preload('res://interface/LifeBar.tscn')
 
-
 func _ready():
 	for node in get_tree().get_nodes_in_group('character'):
 		if not node.has_node('Health'):

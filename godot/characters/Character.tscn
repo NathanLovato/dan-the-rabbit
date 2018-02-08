@@ -224,9 +224,9 @@ tracks/1/keys = {
 [sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
-extents = Vector2( 13.6319, 5.50682 )
+extents = Vector2( 30.5911, 26.3305 )
 
-[node name="Character" type="KinematicBody2D" index="0" groups=[
+[node name="Character" type="KinematicBody2D" groups=[
 "character",
 ]]
 

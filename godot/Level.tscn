@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://environment/tilesets/outdoor.tres" type="TileSet" id=1]
 [ext_resource path="res://environment/Pit.tscn" type="PackedScene" id=2]
@@ -6,7 +6,8 @@
 [ext_resource path="res://characters/monster/Porcupine.tscn" type="PackedScene" id=4]
 [ext_resource path="res://characters/player/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://characters/npc/Npc.tscn" type="PackedScene" id=6]
-[ext_resource path="res://interface/Bars.gd" type="Script" id=7]
+[ext_resource path="res://characters/monster/Dummy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://interface/Bars.gd" type="Script" id=8]
 
 [node name="Level" type="Node2D"]
 
@@ -70,34 +71,36 @@ scale = Vector2( 0.844736, 0.844736 )
 position = Vector2( 728.647, 263.79 )
 scale = Vector2( 0.844736, 0.844736 )
 
-[node name="Porcupine" parent="YSort" index="6" instance=ExtResource( 4 )]
-
-position = Vector2( 784.452, 482.507 )
-collision_mask = 1
-
-[node name="Porcupine2" parent="YSort" index="7" instance=ExtResource( 4 )]
-
-position = Vector2( 288.054, 695.249 )
-collision_mask = 1
-
-[node name="Porcupine3" parent="YSort" index="8" instance=ExtResource( 4 )]
+[node name="Porcupine3" parent="YSort" index="6" instance=ExtResource( 4 )]
 
 position = Vector2( 1216.59, 755.083 )
 collision_mask = 1
 
-[node name="Porcupine4" parent="YSort" index="9" instance=ExtResource( 4 )]
+[node name="Porcupine4" parent="YSort" index="7" instance=ExtResource( 4 )]
 
 position = Vector2( 1221.02, 526.828 )
 collision_mask = 1
 
-[node name="Player" parent="YSort" index="10" instance=ExtResource( 5 )]
+[node name="Player" parent="YSort" index="8" instance=ExtResource( 5 )]
 
 position = Vector2( 618.141, 588.848 )
 collision_mask = 1
 
-[node name="Npc" parent="YSort" index="11" instance=ExtResource( 6 )]
+[node name="Npc" parent="YSort" index="9" instance=ExtResource( 6 )]
 
 position = Vector2( 883.303, 911.943 )
+
+[node name="Dummy" parent="YSort" index="10" instance=ExtResource( 7 )]
+
+position = Vector2( 469.155, 586.444 )
+
+[node name="Dummy2" parent="YSort" index="11" instance=ExtResource( 7 )]
+
+position = Vector2( 622.283, 430.059 )
+
+[node name="Dummy3" parent="YSort" index="12" instance=ExtResource( 7 )]
+
+position = Vector2( 781.926, 596.218 )
 
 [node name="UI" type="CanvasLayer" parent="." index="3"]
 
@@ -120,7 +123,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Rect" ]
 
 

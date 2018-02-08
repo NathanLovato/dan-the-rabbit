@@ -266,6 +266,13 @@ playback/speed = 1.0
 script = ExtResource( 2 )
 max_health = 9
 
+[node name="PoisonTimer" type="Timer" parent="Health" index="0"]
+
+process_mode = 1
+wait_time = 1.4
+one_shot = false
+autostart = false
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 
 position = Vector2( -1, -7.69296 )

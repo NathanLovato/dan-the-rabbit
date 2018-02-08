@@ -80,7 +80,6 @@ func _physics_process(delta):
 		attack()
 
 
-
 func attack():
 	if combo_count >= MAX_COMBO_COUNT:
 		return

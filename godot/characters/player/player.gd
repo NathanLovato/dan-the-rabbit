@@ -19,3 +19,9 @@ func _physics_process(delta):
 
 	if input_direction and input_direction != last_move_direction:
 		$PebbleSpawner.update_position(input_direction)
+		emit_signal('direction_changed', input_direction)
+
+	if Input.is_action_pressed("run"):
+		max_speed = MAX_RUN_SPEED
+	else:
+		max_speed = MAX_WALK_SPEED

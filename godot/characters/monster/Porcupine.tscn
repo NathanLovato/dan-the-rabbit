@@ -12,20 +12,23 @@ extents = Vector2( 45.9769, 37.6985 )
 
 collision_layer = 2
 collision_mask = 9
-weapon_scene = null
 
-[node name="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" parent="." index="3"]
 
-position = Vector2( 0, -38.7805 )
+position = Vector2( 0, -25.933 )
 shape = SubResource( 1 )
 
-[node name="Body" parent="Pivot"]
+[node name="BodyPivot" parent="." index="4"]
 
-position = Vector2( 0, -39.177 )
+editor/display_folded = false
+
+[node name="Body" parent="BodyPivot" index="0"]
+
 texture = ExtResource( 2 )
-offset = Vector2( 0, 0 )
+offset = Vector2( 0.341893, -29.0374 )
+_sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="LifeBar" parent="."]
+[node name="LifeBar" parent="." index="7"]
 
 margin_top = -107.0
 margin_bottom = -86.0

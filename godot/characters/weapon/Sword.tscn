@@ -233,7 +233,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
-[node name="Sword" type="Area2D" index="0"]
+[node name="Sword" type="Area2D"]
 
 rotation = -1.5708
 input_pickable = false

@@ -73,6 +73,7 @@ func _physics_process(delta):
 		if body.get_rid().get_id() in hit_objects:
 			continue
 		if body.has_node("Health") and not body.is_a_parent_of(self):
+			body.calculate_knockback(global_position)
 			body.get_node("Health").take_damage(attack_current['damage'])
 			hit_objects.append(body.get_rid().get_id())
 

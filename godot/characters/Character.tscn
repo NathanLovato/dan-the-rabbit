@@ -226,7 +226,7 @@ tracks/1/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 30.5911, 26.3305 )
 
-[node name="Character" type="KinematicBody2D" groups=[
+[node name="Character" type="KinematicBody2D" index="0" groups=[
 "character",
 ]]
 
@@ -236,6 +236,7 @@ collision_mask = 10
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Z Index" ]
+knockback = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
 

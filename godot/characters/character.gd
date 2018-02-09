@@ -20,6 +20,7 @@ const AIR_ACCELERATION = 1000
 const AIR_DECCELERATION = 2000
 const AIR_STEERING_POWER = 50
 
+# TODO: Use tiles and the level's grid instead
 const GAP_SIZE = Vector2(128, 80)
 
 
@@ -43,6 +44,7 @@ var velocity = Vector2()
 
 
 var knockback_direction = Vector2()
+export(float) var knockback = 10
 const STAGGER_DURATION = 0.4
 
 enum STATES { SPAWN, IDLE, MOVE, JUMP, BUMP, FALL, ATTACK, STAGGER, DIE, DEAD }
@@ -74,6 +76,8 @@ func _ready():
 
 func _change_state(new_state):
 	match state:
+		FALL:
+			$CollisionShape2D.disabled = false
 		STAGGER:
 			$BodyPivot/Body.modulate = Color('#fff')
 		ATTACK:
@@ -105,6 +109,7 @@ func _change_state(new_state):
 			$Tween.interpolate_method(self, '_animate_bump_height', 0, 1, BUMP_DURATION, Tween.TRANS_LINEAR, Tween.EASE_IN)
 			$Tween.start()
 		FALL:
+			$CollisionShape2D.disabled = true
 			$Tween.interpolate_property(self, 'scale', scale, Vector2(0,0), .4, Tween.TRANS_QUAD, Tween.EASE_IN)
 			$Tween.start()
 		ATTACK:
@@ -117,7 +122,6 @@ func _change_state(new_state):
 			weapon.attack()
 			$AnimationPlayer.play('idle')
 		STAGGER:
-			var knockback = 100
 			$Tween.interpolate_property(self, 'position', position, position + knockback * -knockback_direction, STAGGER_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)
 			$Tween.start()
 
@@ -150,8 +154,10 @@ func _physics_process(delta):
 			if max_speed == MAX_RUN_SPEED and collider.is_in_group('environment'):
 				_change_state(BUMP)
 			if collider.is_in_group('character'):
+				calculate_knockback(collider.global_position)
+				print(knockback_direction)
 				$Health.take_damage(2)
-				knockback_direction = (collider.position - position).normalized()
+
 	elif state == JUMP:
 		jump(delta)
 
@@ -203,6 +209,10 @@ func _on_Weapon_attack_finished():
 func _on_AnimationPlayer_animation_finished(name):
 	if name == 'die':
 		_change_state(DEAD)
+
+
+func calculate_knockback(world_position):
+	knockback_direction = (world_position - global_position).normalized()
 
 
 func _on_Health_health_changed(new_health):

@@ -9,6 +9,7 @@
 [node name="Player" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
+knockback = 50.0
 
 [node name="BodyPivot" parent="." index="4"]
 

@@ -13,6 +13,8 @@ var previous_mind_state = null
 
 
 func _ready():
+	$Health.free()
+	$WeaponPivot.free()
 	$Timer.connect('timeout', self, '_on_WaitTimer_timeout')
 
 	# Disabling collisions

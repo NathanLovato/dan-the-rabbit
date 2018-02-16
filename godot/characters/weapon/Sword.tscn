@@ -161,7 +161,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.25 ),
+"times": PoolRealArray( 0.1, 0.25 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -233,7 +233,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
-[node name="Sword" type="Area2D"]
+[node name="Sword" type="Area2D" index="0"]
 
 rotation = -1.5708
 input_pickable = false
@@ -274,6 +274,6 @@ _sections_unfolded = [ "Offset", "Transform" ]
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2"]
 
 build_mode = 0
-polygon = PoolVector2Array( 28.0001, -15.9999, 136, -15.9995, 164, 0.000593678, 136, 16.0005, 27.9999, 16.0001 )
+polygon = PoolVector2Array( 28.0001, -15.9999, 136, -15.9995, 160, 0, 136, 16.0005, 27.9999, 16.0001 )
 
 

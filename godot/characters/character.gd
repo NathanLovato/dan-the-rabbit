@@ -154,9 +154,7 @@ func _physics_process(delta):
 			if max_speed == MAX_RUN_SPEED and collider.is_in_group('environment'):
 				_change_state(BUMP)
 			if collider.is_in_group('character'):
-				calculate_knockback(collider.global_position)
-				print(knockback_direction)
-				$Health.take_damage(2)
+				take_damage(collider, 2)
 
 	elif state == JUMP:
 		jump(delta)
@@ -203,6 +201,7 @@ func jump(delta):
 
 
 func _on_Weapon_attack_finished():
+	print('hey!')
 	_change_state(IDLE)
 
 
@@ -211,8 +210,11 @@ func _on_AnimationPlayer_animation_finished(name):
 		_change_state(DEAD)
 
 
-func calculate_knockback(world_position):
-	knockback_direction = (world_position - global_position).normalized()
+func take_damage(attacker_weapon, amount):
+	if self.is_a_parent_of(attacker_weapon):
+		return
+	knockback_direction = (attacker_weapon.global_position - global_position).normalized()
+	$Health.take_damage(amount)
 
 
 func _on_Health_health_changed(new_health):

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://characters/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://characters/character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/monster/dummy.png" type="Texture" id=2]
 
 [node name="Dummy" instance=ExtResource( 1 )]

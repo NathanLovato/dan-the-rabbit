@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://characters/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://characters/character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/monster/porcupine.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
